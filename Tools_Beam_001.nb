@@ -1,0 +1,1256 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     50621,       1248]
+NotebookOptionsPosition[     46292,       1133]
+NotebookOutlinePosition[     46977,       1157]
+CellTagsIndexPosition[     46868,       1152]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["MakeNCopiesOfBEAMINP", "Section",
+ CellChangeTimes->{3.5423262570260873`*^9},
+ FontColor->GrayLevel[0],
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"e6947601-63e6-47e7-8ca0-9e640205adf9"],
+
+Cell["MakeNCopiesOfBEAMINP", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.5256104043065977`*^9, 3.525610410624609*^9}, 
+   3.5308804692951097`*^9, {3.5308807548612647`*^9, 3.530880821424617*^9}, {
+   3.5308997061818433`*^9, 3.5308997087246475`*^9}, 3.542326257086087*^9},
+ Background->RGBColor[
+  1, 0.9, 0.8],ExpressionUUID->"42d1b085-487c-47d2-9222-dfc6017fcddf"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "MakeNCopiesOfBEAMINP", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Options", "[", "MakeNCopiesOfBEAMINP", "]"}], "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{"MyDeBugOpt", "\[Rule]", "True"}], "\[IndentingNewLine]", "}"}]}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MakeNCopiesOfBEAMINP", "[", 
+    RowBox[{"InFN_String", ",", "InN_", ",", 
+     RowBox[{"OptionsPattern", "[", "]"}]}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+      "MyDeBug", ",", "UseID", ",", "UseText", ",", "FNList", ",", "UseFN", 
+       ",", "UseI"}], "\[IndentingNewLine]", "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", "-", " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "MyDeBug", "}"}], "=", 
+       RowBox[{"OptionValue", "[", 
+        RowBox[{"{", "MyDeBugOpt", "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "-", " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"UseID", "=", 
+       RowBox[{"GetFileNumberIndex", "[", "InFN", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"UseID", "\[Equal]", "\"\<\>\""}], ",", 
+        RowBox[{
+         RowBox[{"Print", "[", "]"}], ";", 
+         RowBox[{"Return", "[", "]"}], ";"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"UseID", "=", 
+       RowBox[{"ToExpression", "[", "UseID", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "-", " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"!", 
+         RowBox[{"FileExistsQ", "[", "InFN", "]"}]}], ",", 
+        RowBox[{
+         RowBox[{"Print", "[", "]"}], ";", 
+         RowBox[{"Return", "[", "]"}], ";"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"UseText", "=", 
+       RowBox[{"Import", "[", 
+        RowBox[{"InFN", ",", "\"\<Lines\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"FNList", "=", 
+       RowBox[{"Table", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"UseText", "[", 
+            RowBox[{"[", "4", "]"}], "]"}], "=", 
+           RowBox[{"ChangeRNGInFourthLineText", "[", 
+            RowBox[{"UseText", "[", 
+             RowBox[{"[", "4", "]"}], "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"UseFN", "=", 
+           RowBox[{"ChangeFileIndexString", "[", 
+            RowBox[{"InFN", ",", "UseI"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"Export", "[", 
+           RowBox[{"UseFN", ",", "UseText", ",", "\"\<Lines\>\""}], "]"}]}], 
+         "\[IndentingNewLine]", ",", 
+         RowBox[{"{", 
+          RowBox[{"UseI", ",", 
+           RowBox[{"UseID", "+", "1"}], ",", 
+           RowBox[{"UseID", "+", "InN"}]}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "FNList"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{"MakeNCopiesOfBEAMINP", "[", 
+    RowBox[{
+    "\"\<C:\\\\egsnrc_mp\\\\BEAM_Acc_001\\\\BAA_001.egsinp\>\"", ",", "2"}], 
+    "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "*)"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.4797301015013113`*^9, 3.4797304127073226`*^9}, 
+   3.4797304604701967`*^9, {3.4819777386715617`*^9, 3.4819777471091156`*^9}, {
+   3.483442013911289*^9, 3.4834421096625147`*^9}, {3.530899559151585*^9, 
+   3.5308995719436073`*^9}, {3.5423262571760874`*^9, 
+   3.5423262900361333`*^9}, {3.5423264622363744`*^9, 
+   3.5423264736763906`*^9}, {3.5423268610560226`*^9, 
+   3.5423270757363234`*^9}, {3.5423321302733994`*^9, 3.542332132393402*^9}, {
+   3.542332365543729*^9, 3.5423323662837296`*^9}, {3.542332542893977*^9, 
+   3.542332670004155*^9}, {3.542332895684471*^9, 3.542332961904564*^9}, {
+   3.5423329980746145`*^9, 
+   3.542333006454626*^9}},ExpressionUUID->"14525d5a-0017-44ab-a799-\
+f90421002a65"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["ChangeFileIndexString", "Section",
+ CellChangeTimes->{3.5347226934187155`*^9, 3.5423327155242186`*^9},
+ FontColor->GrayLevel[0],
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"39c3acba-698f-4909-8ddf-58da7afaf78c"],
+
+Cell["ChangeFileIndexString", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.5256104043065977`*^9, 3.525610410624609*^9}, 
+   3.5308804692951097`*^9, {3.5308807548612647`*^9, 3.530880821424617*^9}, {
+   3.5308997061818433`*^9, 3.5308997087246475`*^9}, 3.5347226934811153`*^9, 
+   3.5423327156042185`*^9},
+ Background->RGBColor[
+  1, 0.9, 0.8],ExpressionUUID->"ebd32400-dd05-4b87-8ba3-0a543302bfb1"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "ChangeFileIndexString", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ChangeFileIndexString", "[", 
+    RowBox[{"InFN_String", ",", "InID_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{
+     "{", "\[IndentingNewLine]", "OutFN", "\[IndentingNewLine]", "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", "\[IndentingNewLine]", " ", "-", " ", "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"OutFN", "=", 
+       RowBox[{"StringReplace", "[", 
+        RowBox[{
+         RowBox[{"FileNameTake", "[", "InFN", "]"}], ",", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"\"\<_\>\"", "~~", "NumberString", "~~", "\"\<.\>\""}], 
+           "\[Rule]", 
+           RowBox[{"\"\<_\>\"", "\[IndentingNewLine]", "<>", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"InID", "<", "100"}], ",", "\"\<0\>\"", ",", 
+              "\"\<\>\""}], "]"}], "\[IndentingNewLine]", "<>", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"InID", "<", "10"}], ",", "\"\<0\>\"", ",", 
+              "\"\<\>\""}], "]"}], "\[IndentingNewLine]", "<>", 
+            RowBox[{"ToString", "[", "InID", "]"}], "\[IndentingNewLine]", 
+            "<>", "\"\<.\>\""}]}], "\[IndentingNewLine]", "}"}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"FileNameDrop", "[", "InFN", "]"}], "<>", "\"\<\\\\\>\"", "<>",
+        "OutFN"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{"ChangeFileIndexString", "[", 
+    RowBox[{
+    "\"\<C:\\\\egsnrc_mp\\\\BEAM_Acc_001\\\\BAA_001.egsinp\>\"", ",", "2"}], 
+    "]"}], "\[IndentingNewLine]", "*)"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.4797301015013113`*^9, 3.4797304127073226`*^9}, 
+   3.4797304604701967`*^9, {3.4819777386715617`*^9, 3.4819777471091156`*^9}, {
+   3.483442013911289*^9, 3.4834421096625147`*^9}, {3.530899559151585*^9, 
+   3.5308995719436073`*^9}, {3.5347226824206963`*^9, 
+   3.5347226935279155`*^9}, {3.534727748857195*^9, 3.5347277619456177`*^9}, {
+   3.5423327156442184`*^9, 3.5423328894744625`*^9}, {3.6454585788012776`*^9, 
+   3.6454585897837477`*^9}},ExpressionUUID->"87540869-26ea-40aa-bb40-\
+67600b79b8b5"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["ChangeRNGInFourthLineText", "Section",
+ CellChangeTimes->{3.5347226934187155`*^9, 3.5423322968036327`*^9},
+ FontColor->GrayLevel[0],
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"a31845f0-3815-48f8-8b39-1bc5b7205254"],
+
+Cell["ChangeRNGInFourthLineText", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.5256104043065977`*^9, 3.525610410624609*^9}, 
+   3.5308804692951097`*^9, {3.5308807548612647`*^9, 3.530880821424617*^9}, {
+   3.5308997061818433`*^9, 3.5308997087246475`*^9}, 3.5347226934811153`*^9, 
+   3.5423322968836327`*^9},
+ Background->RGBColor[
+  1, 0.9, 0.8],ExpressionUUID->"aa70c5aa-d57a-46c1-90c3-7a686758ecc1"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "ChangeRNGInFourthLineText", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ChangeRNGInFourthLineText", "[", "InText_String", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{
+     "{", "\[IndentingNewLine]", "UseText", "\[IndentingNewLine]", "}"}], ",",
+      "\[IndentingNewLine]", 
+     RowBox[{"(*", "\[IndentingNewLine]", " ", "-", " ", "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"UseText", "=", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{"InText", ",", "\"\<,\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"UseText", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "=", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"RandomInteger", "[", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "5000"}], "}"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"UseText", "[", 
+        RowBox[{"[", "3", "]"}], "]"}], "=", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"RandomInteger", "[", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "5000"}], "}"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"StringReplace", "[", 
+       RowBox[{
+        RowBox[{"ToString", "[", "UseText", "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<\>\""}], ",", 
+          RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"UseText", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<C:\\\\egsnrc_mp\\\\BEAM_Acc_001\\\\BAA_001.egsinp\>\"", ",", 
+       "\"\<Lines\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"UseText", "=", 
+     RowBox[{"UseText", "[", 
+      RowBox[{"[", "4", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Print", "[", "UseText", "]"}], "\[IndentingNewLine]", 
+     RowBox[{
+     "ChangeRNGInFourthLineText", "[", "UseText", "\[IndentingNewLine]", 
+      "]"}]}]}], "\[IndentingNewLine]", "*)"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.4797301015013113`*^9, 3.4797304127073226`*^9}, 
+   3.4797304604701967`*^9, {3.4819777386715617`*^9, 3.4819777471091156`*^9}, {
+   3.483442013911289*^9, 3.4834421096625147`*^9}, {3.530899559151585*^9, 
+   3.5308995719436073`*^9}, {3.5347226824206963`*^9, 
+   3.5347226935279155`*^9}, {3.534727748857195*^9, 3.5347277619456177`*^9}, {
+   3.542332296943633*^9, 
+   3.542332534443965*^9}},ExpressionUUID->"c90f3829-bf73-4559-bcec-\
+71daf83b36de"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["GetFileNumberIndex", "Section",
+ CellChangeTimes->{3.5347226934187155`*^9, 3.542326501196429*^9},
+ FontColor->GrayLevel[0],
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"ebc61929-c471-4972-b7b4-5c329985126c"],
+
+Cell["GetFileNumberIndex", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.5256104043065977`*^9, 3.525610410624609*^9}, 
+   3.5308804692951097`*^9, {3.5308807548612647`*^9, 3.530880821424617*^9}, {
+   3.5308997061818433`*^9, 3.5308997087246475`*^9}, 3.5347226934811153`*^9, 
+   3.542326501266429*^9},
+ Background->RGBColor[
+  1, 0.9, 0.8],ExpressionUUID->"d7140d9f-b6b8-46db-bc9f-78c98cf72289"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "GetFileNumberIndex", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"GetFileNumberIndex", "[", "InFN_String", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", "x", "\[IndentingNewLine]", "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", "-", " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"x", "=", 
+       RowBox[{"StringCases", "[", 
+        RowBox[{
+         RowBox[{"FileNameTake", "[", "InFN", "]"}], ",", 
+         RowBox[{
+          RowBox[{"\"\<_\>\"", "~~", 
+           RowBox[{"x", ":", "NumberString"}], "~~", "\"\<.\>\""}], 
+          "\[RuleDelayed]", "x"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"x", "\[Equal]", 
+         RowBox[{"{", "}"}]}], ",", 
+        RowBox[{
+         RowBox[{"Return", "[", "\"\<\>\"", "]"}], ";"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"First", "[", "x", "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+   "GetFileNumberIndex", "[", 
+    "\"\<C:\\\\egsnrc_mp\\\\BEAM_Acc_001\\\\BAA_001.egsinp\>\"", "]"}], 
+   "\[IndentingNewLine]", "*)"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.4797301015013113`*^9, 3.4797304127073226`*^9}, 
+   3.4797304604701967`*^9, {3.4819777386715617`*^9, 3.4819777471091156`*^9}, {
+   3.483442013911289*^9, 3.4834421096625147`*^9}, {3.530899559151585*^9, 
+   3.5308995719436073`*^9}, {3.5347226824206963`*^9, 
+   3.5347226935279155`*^9}, {3.534727748857195*^9, 3.5347277619456177`*^9}, {
+   3.542326501306429*^9, 3.54232651605645*^9}, {3.5423267432058573`*^9, 
+   3.542326855706015*^9}, {3.542327003676222*^9, 
+   3.5423270038362226`*^9}},ExpressionUUID->"c1c05944-65a1-4ea3-9ed2-\
+10c3d76f0aab"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["SetBEAMINPFileToFirstPass", "Section",
+ CellChangeTimes->{3.5347226934187155`*^9, 3.542333069334714*^9},
+ FontColor->GrayLevel[0],
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"66d06110-1b57-4145-90f6-b169722bb99f"],
+
+Cell["SetBEAMINPFileToFirstPass", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.5256104043065977`*^9, 3.525610410624609*^9}, 
+   3.5308804692951097`*^9, {3.5308807548612647`*^9, 3.530880821424617*^9}, {
+   3.5308997061818433`*^9, 3.5308997087246475`*^9}, 3.5347226934811153`*^9, 
+   3.542333069414714*^9},
+ Background->RGBColor[
+  1, 0.9, 0.8],ExpressionUUID->"4e375e97-336a-431b-90f3-44ea62add8b6"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "SetBEAMINPFileToFirstPass", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SetBEAMINPFileToFirstPass", "[", "InFN_String", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{"UseText", ",", "ModText"}], "\[IndentingNewLine]", "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", "-", " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"UseText", "=", 
+       RowBox[{"Import", "[", 
+        RowBox[{"InFN", ",", "\"\<Lines\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ModText", "=", 
+       RowBox[{"UseText", "[", 
+        RowBox[{"[", "3", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ModText", "=", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{"ModText", ",", "\"\<,\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"ModText", "[", 
+        RowBox[{"[", "3", "]"}], "]"}], "=", "\"\<0\>\""}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ModText", "=", 
+       RowBox[{"StringReplace", "[", 
+        RowBox[{
+         RowBox[{"ToString", "[", "ModText", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\"\<  \>\"", "\[Rule]", "\"\< \>\""}], ",", 
+           RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<\>\""}], ",", 
+           RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"UseText", "[", 
+        RowBox[{"[", "3", "]"}], "]"}], "=", "ModText"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Export", "[", 
+       RowBox[{"InFN", ",", "UseText", ",", "\"\<Lines\>\""}], "]"}], ";"}]}],
+     "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+   "SetBEAMINPFileToFirstPass", "[", 
+    "\"\<C:\\\\egsnrc_mp\\\\BEAM_Acc_001\\\\BAA_002.egsinp\>\"", 
+    "\[IndentingNewLine]", "]"}], "*)"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.4797301015013113`*^9, 3.4797304127073226`*^9}, 
+   3.4797304604701967`*^9, {3.4819777386715617`*^9, 3.4819777471091156`*^9}, {
+   3.483442013911289*^9, 3.4834421096625147`*^9}, {3.530899559151585*^9, 
+   3.5308995719436073`*^9}, {3.5347226824206963`*^9, 
+   3.5347226935279155`*^9}, {3.534727748857195*^9, 3.5347277619456177`*^9}, {
+   3.5423330694747143`*^9, 3.5423332834750137`*^9}, {3.5423333210850663`*^9, 
+   3.542333326695074*^9}, 3.5423335538353925`*^9, {3.644709490732422*^9, 
+   3.6447094934316406`*^9}},ExpressionUUID->"4a9bc279-e928-4ebc-9490-\
+469290c366da"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["SetBEAMINPFileToRestart", "Section",
+ CellChangeTimes->{3.5347226934187155`*^9, 3.542333069334714*^9, 
+  3.5423334493452463`*^9},
+ FontColor->GrayLevel[0],
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"67ee47ee-ce82-4f05-908d-6ae4ada10669"],
+
+Cell["SetBEAMINPFileToRestart", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.5256104043065977`*^9, 3.525610410624609*^9}, 
+   3.5308804692951097`*^9, {3.5308807548612647`*^9, 3.530880821424617*^9}, {
+   3.5308997061818433`*^9, 3.5308997087246475`*^9}, 3.5347226934811153`*^9, 
+   3.542333069414714*^9, 3.542333449975247*^9},
+ Background->RGBColor[
+  1, 0.9, 0.8],ExpressionUUID->"1eccf9bf-8060-4fb9-a2fc-14e276cbdabd"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "SetBEAMINPFileToRestart", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SetBEAMINPFileToRestart", "[", "InFN_String", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{"UseText", ",", "ModText"}], "\[IndentingNewLine]", "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", "-", " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"UseText", "=", 
+       RowBox[{"Import", "[", 
+        RowBox[{"InFN", ",", "\"\<Lines\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ModText", "=", 
+       RowBox[{"UseText", "[", 
+        RowBox[{"[", "3", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ModText", "=", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{"ModText", ",", "\"\<,\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"ModText", "[", 
+        RowBox[{"[", "3", "]"}], "]"}], "=", "\"\<1\>\""}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ModText", "=", 
+       RowBox[{"StringReplace", "[", 
+        RowBox[{
+         RowBox[{"ToString", "[", "ModText", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\"\<  \>\"", "\[Rule]", "\"\< \>\""}], ",", 
+           RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<\>\""}], ",", 
+           RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"UseText", "[", 
+        RowBox[{"[", "3", "]"}], "]"}], "=", "ModText"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Export", "[", 
+       RowBox[{"InFN", ",", "UseText", ",", "\"\<Lines\>\""}], "]"}], ";"}]}],
+     "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+   "SetBEAMINPFileToRestart", "[", 
+    "\"\<C:\\\\egsnrc_mp\\\\BEAM_Acc_001\\\\BAA_003.egsinp\>\"", "]"}], 
+   "\[IndentingNewLine]", "*)"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.4797301015013113`*^9, 3.4797304127073226`*^9}, 
+   3.4797304604701967`*^9, {3.4819777386715617`*^9, 3.4819777471091156`*^9}, {
+   3.483442013911289*^9, 3.4834421096625147`*^9}, {3.530899559151585*^9, 
+   3.5308995719436073`*^9}, {3.5347226824206963`*^9, 
+   3.5347226935279155`*^9}, {3.534727748857195*^9, 3.5347277619456177`*^9}, {
+   3.5423330694747143`*^9, 3.5423332834750137`*^9}, {3.5423333210850663`*^9, 
+   3.542333326695074*^9}, {3.542333450495248*^9, 3.5423335095753307`*^9}, 
+   3.542333546475382*^9, 3.5423335953854504`*^9, {3.644709506392578*^9, 
+   3.644709510408203*^9}},ExpressionUUID->"c5afe42d-b979-4a2a-af72-\
+c839868d5f8f"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["CreateBEAMBatchFile", "Section",
+ CellChangeTimes->{3.542333637315509*^9},
+ FontColor->GrayLevel[0],
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"d5a0a7cc-03f3-4b3e-a306-fc6c39546855"],
+
+Cell["CreateBEAMBatchFile", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.5256104043065977`*^9, 3.525610410624609*^9}, 
+   3.5308804692951097`*^9, {3.5308807548612647`*^9, 3.530880821424617*^9}, {
+   3.5308997061818433`*^9, 3.5308997087246475`*^9}, 3.5423336373955097`*^9},
+ Background->RGBColor[
+  1, 0.9, 0.8],ExpressionUUID->"2d6553e6-90a0-4a79-b6a8-a59ecf556b25"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "CreateBEAMBatchFile", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Options", "[", "CreateBEAMBatchFile", "]"}], "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"MyDeBugOpt", "\[Rule]", "False"}], "\[IndentingNewLine]", ",", 
+     RowBox[{"InPEGSFileOpt", "\[Rule]", "\"\<521icru.pegs4dat\>\""}], 
+     "\[IndentingNewLine]", ",", 
+     RowBox[{"InBeamModelNameOpt", "\[Rule]", "\"\<Acc_001\>\""}], 
+     "\[IndentingNewLine]", ",", 
+     RowBox[{"InPriorityOpt", "\[Rule]", "\"\<low\>\""}], 
+     "\[IndentingNewLine]", ",", 
+     RowBox[{"InWaitForCompletionOpt", "\[Rule]", "False"}]}], 
+    "\[IndentingNewLine]", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CreateBEAMBatchFile", "[", 
+    RowBox[{"InFNList_List", ",", "InFN_String", ",", 
+     RowBox[{"OptionsPattern", "[", "]"}]}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+      "MyDeBug", ",", "InPEGSFile", ",", "InBeamModelName", ",", "InPriority",
+        ",", "InWaitForCompletion", "\[IndentingNewLine]", ",", "UseFN", ",", 
+       "OutText", ",", "UseI", ",", "IMax", ",", "UseDir", 
+       "\[IndentingNewLine]", ",", 
+       RowBox[{
+       "BatchText", "=", 
+        "\"\<start \\\"MODEL INPUT\\\" /b /PRIORITY BEAM_MODEL.exe -p PEGS -i \
+INPUT\>\""}]}], "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", "-", " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "MyDeBug", ",", "InPEGSFile", ",", "InBeamModelName", ",", 
+         "InPriority", ",", "InWaitForCompletion"}], "\[IndentingNewLine]", 
+        "}"}], "=", 
+       RowBox[{"OptionValue", "[", 
+        RowBox[{"{", 
+         RowBox[{
+         "MyDeBugOpt", ",", "InPEGSFileOpt", ",", "InBeamModelNameOpt", ",", 
+          "InPriorityOpt", ",", "InWaitForCompletionOpt"}], 
+         "\[IndentingNewLine]", "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "-", " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{"MyDeBug", ",", 
+        RowBox[{
+         RowBox[{"Print", "[", "\[IndentingNewLine]", 
+          RowBox[{
+          "\"\<Entering  ----------------> CreateBEAMBatchFile\>\"", ",", 
+           "\"\<\\n\>\"", "\[IndentingNewLine]", ",", 
+           "\"\<InFNList  ----------------> \>\"", ",", "InFNList", ",", 
+           "\"\<\\n\>\"", "\[IndentingNewLine]", ",", 
+           "\"\<InFN  --------------------> \>\"", ",", "InFN", ",", 
+           "\"\<\\n\>\"", "\[IndentingNewLine]", ",", 
+           "\"\<InPEGSFile  --------------> \>\"", ",", "InPEGSFile", ",", 
+           "\"\<\\n\>\"", "\[IndentingNewLine]", ",", 
+           "\"\<InBeamModelName  ---------> \>\"", ",", "InBeamModelName", 
+           ",", "\"\<\\n\>\"", "\[IndentingNewLine]", ",", 
+           "\"\<InPriority  --------------> \>\"", ",", "InPriority"}], 
+          "\[IndentingNewLine]", "]"}], ";"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "-", " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"UseFN", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"FileNameTake", "[", "#", "]"}], "&"}], ")"}], "/@", 
+        "InFNList"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"UseFN", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"FileBaseName", "[", "#", "]"}], "&"}], ")"}], "/@", 
+        "UseFN"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", "-", " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"IMax", "=", 
+       RowBox[{"Length", "[", "UseFN", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"OutText", "=", 
+       RowBox[{"Table", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"StringReplace", "[", 
+          RowBox[{"BatchText", ",", 
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"\"\<MODEL\>\"", "\[Rule]", "InBeamModelName"}], 
+             "\[IndentingNewLine]", ",", 
+             RowBox[{"\"\<PEGS\>\"", "\[Rule]", 
+              RowBox[{"StringReplace", "[", 
+               RowBox[{"InPEGSFile", ",", 
+                RowBox[{"{", 
+                 RowBox[{"\"\<.pegs4dat\>\"", "\[Rule]", "\"\<\>\""}], 
+                 "}"}]}], "]"}]}], "\[IndentingNewLine]", ",", 
+             RowBox[{"\"\<INPUT\>\"", "\[Rule]", 
+              RowBox[{"UseFN", "[", 
+               RowBox[{"[", "UseI", "]"}], "]"}]}], "\[IndentingNewLine]", 
+             ",", 
+             RowBox[{"\"\<PRIORITY\>\"", "\[Rule]", "InPriority"}], 
+             "\[IndentingNewLine]", ",", 
+             RowBox[{"\"\<\>\"", "\[Rule]", "\"\<\>\""}], 
+             "\[IndentingNewLine]", ",", 
+             RowBox[{"\"\<\>\"", "\[Rule]", "\"\<\>\""}]}], 
+            "\[IndentingNewLine]", "}"}]}], "]"}], "\[IndentingNewLine]", ",", 
+         RowBox[{"{", 
+          RowBox[{"UseI", ",", "IMax"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{"InWaitForCompletion", ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"OutText", "=", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"StringReplace", "[", 
+              RowBox[{"#", ",", 
+               RowBox[{"{", 
+                RowBox[{"\"\</b\>\"", "\[Rule]", "\"\</wait\>\""}], "}"}]}], 
+              "]"}], "&"}], ")"}], "/@", "OutText"}]}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", "\[IndentingNewLine]", 
+       RowBox[{"Export", "[", 
+        RowBox[{"InFN", ",", "OutText", ",", "\"\<Lines\>\""}], "]"}], 
+       "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"Export", "[", 
+       RowBox[{
+        RowBox[{
+        "\"\<C:\\\\egsnrc_mp\\\\BEAM_\>\"", "<>", "InBeamModelName", "<>", 
+         "\"\<\\\\\>\"", "<>", "InFN"}], ",", "OutText", ",", 
+        "\"\<Lines\>\""}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"UseFN", "=", 
+     RowBox[{
+     "FileNames", "[", 
+      "\"\<C:\\\\egsnrc_mp\\\\BEAM_Acc_001\\\\BAA_00*.egsinp\>\"", "]"}]}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"UseFN", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"FileNameTake", "[", "#", "]"}], "&"}], ")"}], "/@", 
+      "UseFN"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"CreateBEAMBatchFile", "[", 
+     RowBox[{"UseFN", ",", "\"\<0BAA_xxx.bat\>\"", "\[IndentingNewLine]", ",", 
+      RowBox[{"MyDeBugOpt", "\[Rule]", "True"}]}], "\[IndentingNewLine]", 
+     "]"}]}], "\[IndentingNewLine]", "*)"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.4797301015013113`*^9, 3.4797304127073226`*^9}, 
+   3.4797304604701967`*^9, {3.4819777386715617`*^9, 3.4819777471091156`*^9}, {
+   3.483442013911289*^9, 3.4834421096625147`*^9}, {3.530899559151585*^9, 
+   3.5308995719436073`*^9}, {3.5423336375055094`*^9, 
+   3.5423336388155117`*^9}, {3.542333800535738*^9, 3.5423343828265533`*^9}, {
+   3.5423344147865973`*^9, 3.5423346652069483`*^9}, {3.542334726427034*^9, 
+   3.542334746447062*^9}, {3.5423348201471653`*^9, 3.5423348237971706`*^9}, {
+   3.542335289147822*^9, 3.542335290087823*^9}, {3.7042157495703125`*^9, 
+   3.704215765326172*^9}, {3.7042160537148438`*^9, 
+   3.7042161543759766`*^9}},ExpressionUUID->"c2b47780-ef92-40b1-8fe6-\
+72129906c3f6"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["SetBEAMINPNumberHistories", "Section",
+ CellChangeTimes->{3.5347226934187155`*^9, 3.542334886407258*^9},
+ FontColor->GrayLevel[0],
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"806ed599-63e9-4c36-ac68-d556d5d261f2"],
+
+Cell["SetBEAMINPNumberHistories", "Text",
+ PageWidth->PaperWidth,
+ CellChangeTimes->{{3.5256104043065977`*^9, 3.525610410624609*^9}, 
+   3.5308804692951097`*^9, {3.5308807548612647`*^9, 3.530880821424617*^9}, {
+   3.5308997061818433`*^9, 3.5308997087246475`*^9}, 3.5347226934811153`*^9, 
+   3.542334886487258*^9},
+ Background->RGBColor[
+  1, 0.9, 0.8],ExpressionUUID->"ef69cd24-2fbc-4744-8bf5-0ecee5354d30"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "SetBEAMINPNumberHistories", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SetBEAMINPNumberHistories", "[", 
+    RowBox[{"InFN_String", ",", "InHist_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{"UseText", ",", "ModText"}], "\[IndentingNewLine]", "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", "-", " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"UseText", "=", 
+       RowBox[{"Import", "[", 
+        RowBox[{"InFN", ",", "\"\<Lines\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ModText", "=", 
+       RowBox[{"UseText", "[", 
+        RowBox[{"[", "4", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ModText", "=", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{"ModText", ",", "\"\<,\>\""}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"ModText", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "=", 
+       RowBox[{"ToString", "[", "InHist", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ModText", "=", 
+       RowBox[{"StringReplace", "[", 
+        RowBox[{
+         RowBox[{"ToString", "[", "ModText", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\"\<  \>\"", "\[Rule]", "\"\< \>\""}], ",", 
+           RowBox[{"\"\<{\>\"", "\[Rule]", "\"\<\>\""}], ",", 
+           RowBox[{"\"\<}\>\"", "\[Rule]", "\"\<\>\""}]}], "}"}]}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"UseText", "[", 
+        RowBox[{"[", "4", "]"}], "]"}], "=", "ModText"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Export", "[", 
+       RowBox[{"InFN", ",", "UseText", ",", "\"\<Lines\>\""}], "]"}], ";"}]}],
+     "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{"SetBEAMINPNumberHistories", "[", 
+    RowBox[{
+    "\"\<C:\\\\egsnrc_mp\\\\BEAM_Acc_001\\\\BAA_003.egsinp\>\"", ",", 
+     "10000"}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+   "*)"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.4797301015013113`*^9, 3.4797304127073226`*^9}, 
+   3.4797304604701967`*^9, {3.4819777386715617`*^9, 3.4819777471091156`*^9}, {
+   3.483442013911289*^9, 3.4834421096625147`*^9}, {3.530899559151585*^9, 
+   3.5308995719436073`*^9}, {3.5347226824206963`*^9, 
+   3.5347226935279155`*^9}, {3.534727748857195*^9, 3.5347277619456177`*^9}, {
+   3.542334886527258*^9, 3.542335026487454*^9}, {3.5423350589674997`*^9, 
+   3.542335062077504*^9}},ExpressionUUID->"c665656a-1806-4b0b-ae0e-\
+7437c63ce9c3"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Spectrum Stuff", "Subchapter",
+ CellChangeTimes->{{3.6454456960356917`*^9, 
+  3.645445700973692*^9}},ExpressionUUID->"3ea4387c-7cba-4f13-b569-\
+2592f3424c5e"],
+
+Cell[CellGroupData[{
+
+Cell["MyFortranSciFormat", "Subsection",
+ CellChangeTimes->{3.644315946201475*^9},
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"a0f981af-50d9-476b-98a6-d9ee77e3b5ce"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "MyFortranSciFormat", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Options", "[", "MyFortranSciFormat", "]"}], "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"MyDeBugOpt", "\[Rule]", "False"}], "\[IndentingNewLine]", ",", 
+     RowBox[{"MyFormatOpt", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"10", ",", "4"}], "}"}]}]}], "\[IndentingNewLine]", "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MyFortranSciFormat", "[", 
+    RowBox[{"MyNumberIn_", ",", "MyInOptions___"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+      "MyDeBug", "\[IndentingNewLine]", ",", "MyExponent", 
+       "\[IndentingNewLine]", ",", "MyMantissa", "\[IndentingNewLine]", ",", 
+       "MyFormat", "\[IndentingNewLine]", ",", "MyFrontSpacePad", 
+       "\[IndentingNewLine]", ",", "MyZeroPad", "\[IndentingNewLine]", ",", 
+       "MyStringLength", "\[IndentingNewLine]", ",", "MyIsNegative"}], 
+      "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"MyDeBug", "=", 
+       RowBox[{
+        RowBox[{"MyDeBugOpt", "/.", 
+         RowBox[{"{", "MyInOptions", "}"}]}], "/.", 
+        RowBox[{"Options", "[", "MyFortranSciFormat", "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"MyFormat", "=", 
+       RowBox[{
+        RowBox[{"MyFormatOpt", "/.", 
+         RowBox[{"{", "MyInOptions", "}"}]}], "/.", 
+        RowBox[{"Options", "[", "MyFortranSciFormat", "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{"MyDeBug", ",", 
+        RowBox[{
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<MyDeBug -> \>\"", ",", "MyDeBug"}], "]"}], ";"}]}], 
+       "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{"MyDeBug", ",", 
+        RowBox[{
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<MyFormat -> \>\"", ",", "MyFormat"}], "]"}], ";"}]}], 
+       "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"MyExponent", "=", 
+       RowBox[{
+        RowBox[{"MantissaExponent", "[", "MyNumberIn", "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"MyMantissa", "=", 
+       RowBox[{
+        RowBox[{"MantissaExponent", "[", "MyNumberIn", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"MyIsNegative", "=", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"MyMantissa", "<", "0"}], ",", "1", ",", "0"}], "]"}]}], ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"MyMantissa", "=", 
+       RowBox[{"ToString", "[", "MyMantissa", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"StringLength", "[", "MyMantissa", "]"}], "-", "2", "-", 
+          "MyIsNegative"}], "<", 
+         RowBox[{"MyFormat", "[", 
+          RowBox[{"[", "2", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"While", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"StringLength", "[", "MyMantissa", "]"}], "-", "2", "-", 
+             "MyIsNegative"}], "<", 
+            RowBox[{"MyFormat", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+           RowBox[{
+            RowBox[{"MyMantissa", "=", 
+             RowBox[{"MyMantissa", "<>", "\"\<0\>\""}]}], ";"}]}], 
+          "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", ",", 
+        RowBox[{
+         RowBox[{"While", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"StringLength", "[", "MyMantissa", "]"}], "-", "2", "-", 
+             "MyIsNegative"}], ">", 
+            RowBox[{"MyFormat", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+           RowBox[{
+            RowBox[{"MyMantissa", "=", 
+             RowBox[{"StringDrop", "[", 
+              RowBox[{"MyMantissa", ",", 
+               RowBox[{"-", "1"}]}], "]"}]}], ";"}]}], "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"MyStringLength", "=", 
+       RowBox[{"StringLength", "[", 
+        RowBox[{"MyMantissa", "<>", "\"\<E\>\"", "<>", 
+         RowBox[{"ToString", "[", "MyExponent", "]"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"MyMantissa", "<>", "\"\<E\>\"", "<>", 
+       RowBox[{"ToString", "[", "MyExponent", "]"}]}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"MyFortranSciFormat", "[", 
+    RowBox[{"1.7", "*", 
+     RowBox[{"10", "^", 
+      RowBox[{"-", "25"}]}]}], "]"}], "*)"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{
+  3.644315953708226*^9},ExpressionUUID->"9a822abf-be2c-4a10-89d4-\
+ca46cf65c82f"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["WriteGaussianSpectraForEGS", "Subsection",
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"77e0e4f7-77d3-4c43-9a38-33cefc38fde6"],
+
+Cell["\<\
+WriteGaussianSpectraForEGS Notes
+\
+\>", "Text",
+ PageWidth->PaperWidth,
+ Background->RGBColor[
+  1, 0.9, 0.8],ExpressionUUID->"c15ec9d3-b2ad-49bd-b3bd-6da64d443477"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Clear", "[", "WriteGaussianSpectraForEGS", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Options", "[", "WriteGaussianSpectraForEGS", "]"}], "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"WidthsToDefineOpt", "\[Rule]", "4."}], "\[IndentingNewLine]", 
+     ",", 
+     RowBox[{"NumberBinsToDefineOpt", "\[Rule]", "50."}], 
+     "\[IndentingNewLine]", ",", 
+     RowBox[{
+     "SpectrumDirNameOpt", "\[Rule]", 
+      "\"\<C:\\\\egsnrc_mp\\\\001_Spectra\\\\\>\""}]}], "\[IndentingNewLine]",
+     "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"WriteGaussianSpectraForEGS", "[", 
+    RowBox[{"InE_", ",", "InW_", ",", 
+     RowBox[{"OptionsPattern", "[", "]"}]}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+      "WidthsToDefine", ",", "NumberBinsToDefine", ",", "SpectrumDirName", 
+       "\[IndentingNewLine]", ",", "EVals", ",", "x", ",", "UseSpectrum", ",",
+        "UseFN", ",", "IDFile", ",", "UseI"}], "\[IndentingNewLine]", "}"}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "WidthsToDefine", ",", "NumberBinsToDefine", ",", "SpectrumDirName"}],
+         "\[IndentingNewLine]", "}"}], "=", 
+       RowBox[{"OptionValue", "[", 
+        RowBox[{"{", 
+         RowBox[{
+         "WidthsToDefineOpt", ",", "NumberBinsToDefineOpt", ",", 
+          "SpectrumDirNameOpt"}], "\[IndentingNewLine]", "}"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"EVals", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{"x", ",", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", 
+           RowBox[{"InE", "-", 
+            RowBox[{"WidthsToDefine", "*", "InW"}]}], ",", 
+           RowBox[{"InE", "+", 
+            RowBox[{"WidthsToDefine", "*", "InW"}]}], ",", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"WidthsToDefine", "*", "InW"}], ")"}], "/", 
+            RowBox[{"(", 
+             RowBox[{"NumberBinsToDefine", "-", "1"}], ")"}]}]}], "}"}]}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"EVals", "=", 
+       RowBox[{"Select", "[", 
+        RowBox[{"EVals", ",", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"#", ">", "0"}], "&"}], ")"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"UseSpectrum", "=", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"#", "\[IndentingNewLine]", ",", 
+            RowBox[{
+             RowBox[{"Exp", "[", 
+              RowBox[{
+               RowBox[{"-", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"#", "-", "InE"}], ")"}], "^", "2"}], ")"}]}], "/", 
+               RowBox[{
+                RowBox[{"(", "InW", ")"}], "^", "2"}]}], "]"}], "/", 
+             RowBox[{"(", 
+              RowBox[{"2", "*", "InW"}], ")"}]}]}], "\[IndentingNewLine]", 
+           "}"}], "&"}], ")"}], "/@", "EVals"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"UseFN", "=", 
+       RowBox[{"FileNameJoin", "[", 
+        RowBox[{"{", 
+         RowBox[{"SpectrumDirName", "\[IndentingNewLine]", ",", 
+          RowBox[{"\"\<Gaussian_E\>\"", "\[IndentingNewLine]", "<>", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"InE", "<", "10"}], ",", "\"\<0\>\"", ",", "\"\<\>\""}], 
+            "]"}], "\[IndentingNewLine]", "<>", 
+           RowBox[{"ToString", "[", "InE", "]"}], "\[IndentingNewLine]", "<>", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"StringTake", "[", 
+               RowBox[{
+                RowBox[{"ToString", "[", "InE", "]"}], ",", 
+                RowBox[{"-", "1"}]}], "]"}], "\[Equal]", "\"\<.\>\""}], ",", 
+             "\"\<0\>\"", ",", "\"\<\>\""}], "]"}], "\[IndentingNewLine]", 
+           "<>", "\"\<_W\>\"", "<>", 
+           RowBox[{"ToString", "[", "InW", "]"}], "<>", 
+           "\"\<.spectrum\>\""}]}], "}"}], "\[IndentingNewLine]", "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"Print", "[", "UseFN", "]"}], ";"}], "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"IDFile", "=", 
+       RowBox[{"OpenWrite", "[", "UseFN", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"WriteString", "[", 
+       RowBox[{"IDFile", ",", 
+        RowBox[{"\"\<Gaussian Spectrum With E0 = \>\"", "<>", 
+         RowBox[{"ToString", "[", "InE", "]"}], "\[IndentingNewLine]", "<>", 
+         "\"\<MeV  Width = \>\"", "<>", 
+         RowBox[{"ToString", "[", "InW", "]"}], "\[IndentingNewLine]", "<>", 
+         "\"\<\\n     \>\"", "<>", 
+         RowBox[{"ToString", "[", 
+          RowBox[{"Length", "[", "EVals", "]"}], "]"}], "<>", 
+         "\"\<,  0, 1\>\"", "\[IndentingNewLine]", "<>", "\"\<\\n\>\""}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Do", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"WriteString", "[", 
+          RowBox[{"IDFile", ",", 
+           RowBox[{"\"\<      \>\"", "<>", 
+            RowBox[{"ToString", "[", 
+             RowBox[{"MyFortranSciFormat", "[", 
+              RowBox[{"UseSpectrum", "[", 
+               RowBox[{"[", 
+                RowBox[{"UseI", ",", "1"}], "]"}], "]"}], "]"}], "]"}], "<>", 
+            "\"\< , \>\""}]}], "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"WriteString", "[", 
+          RowBox[{"IDFile", ",", 
+           RowBox[{
+            RowBox[{"ToString", "[", 
+             RowBox[{"MyFortranSciFormat", "[", 
+              RowBox[{"UseSpectrum", "[", 
+               RowBox[{"[", 
+                RowBox[{"UseI", ",", "2"}], "]"}], "]"}], "]"}], "]"}], "<>", 
+            "\"\<\\n\>\""}]}], "]"}], ";"}], "\[IndentingNewLine]", ",", 
+        RowBox[{"{", 
+         RowBox[{"UseI", ",", 
+          RowBox[{"Length", "[", "UseSpectrum", "]"}]}], "}"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Close", "[", "IDFile", "]"}], ";", "\[IndentingNewLine]", 
+      "UseSpectrum"}]}], "\n", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"(*", "\[IndentingNewLine]", 
+   RowBox[{"ListPlot", "[", "\n", 
+    RowBox[{
+     RowBox[{"WriteGaussianSpectraForEGS", "[", 
+      RowBox[{"18.", ",", "0.5"}], "]"}], "\[IndentingNewLine]", ",", 
+     RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "All"}], "\[IndentingNewLine]", ",", 
+     RowBox[{"GridLines", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"18", "-", "0.5"}], ",", 
+          RowBox[{"18", "+", "0.5"}]}], "}"}], ",", 
+        RowBox[{"{", "0.5", "}"}]}], "}"}]}]}], "\[IndentingNewLine]", "]"}], 
+   "\n", "*)"}]}]}], "Input",
+ Editable->True,
+ Evaluatable->True,
+ InitializationCell->True,
+ CellChangeTimes->{{3.644315970908946*^9, 3.6443162291297655`*^9}, {
+   3.6443166507959275`*^9, 3.644316710683916*^9}, {3.6443167436222095`*^9, 
+   3.6443168146623125`*^9}, {3.6443168513669825`*^9, 3.644316901816027*^9}, {
+   3.644316971276973*^9, 3.644316971530998*^9}, {3.6443170295197964`*^9, 
+   3.644317039277772*^9}, {3.6443174287847185`*^9, 3.644317604023241*^9}, {
+   3.6443178364804845`*^9, 3.644317924757311*^9}, {3.644317962023037*^9, 
+   3.6443181913099637`*^9}, {3.6443182600368357`*^9, 3.644318296697501*^9}, {
+   3.644318346856517*^9, 3.644318490850915*^9}, {3.6443185279096203`*^9, 
+   3.644318561829012*^9}, {3.6443187908019066`*^9, 3.644318790974924*^9}, 
+   3.6443209669645014`*^9, {3.6453769274064035`*^9, 3.6453769434364033`*^9}, {
+   3.6453769844434032`*^9, 3.6453770874494033`*^9}, 3.6453771965144033`*^9, {
+   3.6454440012656918`*^9, 3.645444004230692*^9}, 3.6454464384726915`*^9},
+ Background->GrayLevel[0.85],
+ CellTags->
+  "FunctionDefinition \
+WriteGaussianSpectraForEGS",ExpressionUUID->"2fae7144-755a-4df3-b1b1-\
+b6954f3aeb4c"]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{947, 873},
+WindowMargins->{{Automatic, 113}, {Automatic, 30}},
+FrontEndVersion->"11.1 for Microsoft Windows (64-bit) (April 18, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "FunctionDefinition WriteGaussianSpectraForEGS"->{
+  Cell[38308, 945, 7956, 184, 
+  968, "Input", "ExpressionUUID" -> "2fae7144-755a-4df3-b1b1-b6954f3aeb4c",
+   Evaluatable->True,
+   InitializationCell->True,
+   CellTags->"FunctionDefinition WriteGaussianSpectraForEGS"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"FunctionDefinition WriteGaussianSpectraForEGS", 46623, 1143}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 202, 4, 74, "Section", "ExpressionUUID" -> \
+"e6947601-63e6-47e7-8ca0-9e640205adf9"],
+Cell[785, 28, 374, 6, 46, "Text", "ExpressionUUID" -> \
+"42d1b085-487c-47d2-9222-dfc6017fcddf"],
+Cell[1162, 36, 4114, 97, 541, "Input", "ExpressionUUID" -> \
+"14525d5a-0017-44ab-a799-f90421002a65",
+ InitializationCell->True]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5313, 138, 227, 4, 60, "Section", "ExpressionUUID" -> \
+"39c3acba-698f-4909-8ddf-58da7afaf78c"],
+Cell[5543, 144, 405, 7, 46, "Text", "ExpressionUUID" -> \
+"ebd32400-dd05-4b87-8ba3-0a543302bfb1"],
+Cell[5951, 153, 2401, 54, 372, "Input", "ExpressionUUID" -> \
+"87540869-26ea-40aa-bb40-67600b79b8b5",
+ InitializationCell->True]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[8389, 212, 231, 4, 60, "Section", "ExpressionUUID" -> \
+"a31845f0-3815-48f8-8b39-1bc5b7205254"],
+Cell[8623, 218, 409, 7, 46, "Text", "ExpressionUUID" -> \
+"aa70c5aa-d57a-46c1-90c3-7a686758ecc1"],
+Cell[9035, 227, 2696, 67, 372, "Input", "ExpressionUUID" -> \
+"c90f3829-bf73-4559-bcec-71daf83b36de",
+ InitializationCell->True]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[11768, 299, 222, 4, 60, "Section", "ExpressionUUID" -> \
+"ebc61929-c471-4972-b7b4-5c329985126c"],
+Cell[11993, 305, 400, 7, 46, "Text", "ExpressionUUID" -> \
+"d7140d9f-b6b8-46db-bc9f-78c98cf72289"],
+Cell[12396, 314, 1914, 45, 256, "Input", "ExpressionUUID" -> \
+"c1c05944-65a1-4ea3-9ed2-10c3d76f0aab",
+ InitializationCell->True]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[14347, 364, 229, 4, 60, "Section", "ExpressionUUID" -> \
+"66d06110-1b57-4145-90f6-b169722bb99f"],
+Cell[14579, 370, 407, 7, 46, "Text", "ExpressionUUID" -> \
+"4e375e97-336a-431b-90f3-44ea62add8b6"],
+Cell[14989, 379, 2660, 61, 332, "Input", "ExpressionUUID" -> \
+"4a9bc279-e928-4ebc-9490-469290c366da",
+ InitializationCell->True]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[17686, 445, 254, 5, 60, "Section", "ExpressionUUID" -> \
+"67ee47ee-ce82-4f05-908d-6ae4ada10669"],
+Cell[17943, 452, 427, 7, 46, "Text", "ExpressionUUID" -> \
+"1eccf9bf-8060-4fb9-a2fc-14e276cbdabd"],
+Cell[18373, 461, 2725, 62, 332, "Input", "ExpressionUUID" -> \
+"c5afe42d-b979-4a2a-af72-c839868d5f8f",
+ InitializationCell->True]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[21135, 528, 199, 4, 60, "Section", "ExpressionUUID" -> \
+"d5a0a7cc-03f3-4b3e-a306-fc6c39546855"],
+Cell[21337, 534, 375, 6, 46, "Text", "ExpressionUUID" -> \
+"2d6553e6-90a0-4a79-b6a8-a59ecf556b25"],
+Cell[21715, 542, 7551, 165, 1092, "Input", "ExpressionUUID" -> \
+"c2b47780-ef92-40b1-8fe6-72129906c3f6",
+ InitializationCell->True]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[29303, 712, 229, 4, 60, "Section", "ExpressionUUID" -> \
+"806ed599-63e9-4c36-ac68-d556d5d261f2"],
+Cell[29535, 718, 407, 7, 46, "Text", "ExpressionUUID" -> \
+"ef69cd24-2fbc-4744-8bf5-0ecee5354d30"],
+Cell[29945, 727, 2694, 62, 351, "Input", "ExpressionUUID" -> \
+"c665656a-1806-4b0b-ae0e-7437c63ce9c3",
+ InitializationCell->True]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[32676, 794, 164, 3, 51, "Subchapter", "ExpressionUUID" -> \
+"3ea4387c-7cba-4f13-b569-2592f3424c5e"],
+Cell[CellGroupData[{
+Cell[32865, 801, 175, 3, 65, "Subsection", "ExpressionUUID" -> \
+"a0f981af-50d9-476b-98a6-d9ee77e3b5ce"],
+Cell[33043, 806, 4906, 122, 652, "Input", "ExpressionUUID" -> \
+"9a822abf-be2c-4a10-89d4-ca46cf65c82f",
+ InitializationCell->True]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[37986, 933, 141, 2, 57, "Subsection", "ExpressionUUID" -> \
+"77e0e4f7-77d3-4c43-9a38-33cefc38fde6"],
+Cell[38130, 937, 175, 6, 65, "Text", "ExpressionUUID" -> \
+"c15ec9d3-b2ad-49bd-b3bd-6da64d443477"],
+Cell[38308, 945, 7956, 184, 968, "Input", "ExpressionUUID" -> \
+"2fae7144-755a-4df3-b1b1-b6954f3aeb4c",
+ Evaluatable->True,
+ InitializationCell->True,
+ CellTags->"FunctionDefinition WriteGaussianSpectraForEGS"]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
