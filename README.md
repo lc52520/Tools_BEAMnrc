@@ -6,7 +6,7 @@ MakeNCopiesOfBEAMINP ->
   Creates subcopies of a file. 
   Each new input has their own random number seed.
   Each new input has a unique(?) index on the end.
-  For creating matching .egsinp files thAt can be excuted with simple parallelism
+  For creating matching .egsinp files that can be excuted with simple parallelism
 
 ChangeFileIndexString -> 
 
